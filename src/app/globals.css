@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-rose/40 text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.ink.DEFAULT");
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-[11px] uppercase tracking-widest2 text-taupe;
+  }
+
+  .container-lune {
+    @apply mx-auto w-full max-w-8xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .hover-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s theme("transitionTimingFunction.lune");
+  }
+  .hover-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  .img-zoom {
+    @apply overflow-hidden;
+  }
+  .img-zoom img {
+    transition: transform 0.7s theme("transitionTimingFunction.lune");
+  }
+  .img-zoom:hover img {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
